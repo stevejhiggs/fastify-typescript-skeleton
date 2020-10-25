@@ -12,7 +12,7 @@
     "build": "tsc",
     "test": "jest --collectCoverageFrom='src/**/*.ts' --coverage",
     "test:watch": "jest --collectCoverageFrom='src/**/*.ts' --watch",
-    "startProduction": "node .dist/listener.js",
+    "startProduction": "node lib/src/listener.js",
     "prettier": "./node_modules/.bin/prettier --write '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
     "prettier-check": "./node_modules/.bin/prettier --check '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
     "eslint-check": "eslint '**/*.{js,jsx,ts,tsx}'",

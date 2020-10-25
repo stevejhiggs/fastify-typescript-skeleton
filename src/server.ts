@@ -10,8 +10,10 @@ export default function getServer() {
     logger: true
   });
 
+  // add security headers
   app.register(helmet);
 
+  // adds open api documentations at /documentation
   app.register(fastifyOas, {
     swagger: {
       info: {
