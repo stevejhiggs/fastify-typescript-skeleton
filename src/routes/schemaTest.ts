@@ -2,7 +2,8 @@ import { FastifyInstance, FastifySchema } from 'fastify';
 import { Type, Static } from '@sinclair/typebox';
 
 // Typebox can generate both json schema and typescript types
-// the json schemas are checked at runtime, the ts schemas at compile time
+// the json schemas are checked at runtime, the ts schemas at compile time.
+// You don't have to use all of these on each request
 const bodySchema = Type.Object({
   someKey: Type.Optional(Type.String()),
   someOtherKey: Type.Number({ maximum: 999 }),
