@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/stevejhiggs/fastify-example#readme",
   "dependencies": {
+    "@sinclair/typebox": "^0.11.0",
     "fastify": "^3.7.0",
     "fastify-helmet": "^5.0.3",
     "pino": "^6.7.0"
