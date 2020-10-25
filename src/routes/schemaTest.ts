@@ -38,7 +38,10 @@ const schema: FastifySchema = {
   body: bodySchema,
   querystring: querystringSchema,
   params: paramsSchema,
-  headers: headersSchema
+  headers: headersSchema,
+  response: {
+    200: responseSchema
+  }
 };
 
 // The typescript types representing the above json schemas
