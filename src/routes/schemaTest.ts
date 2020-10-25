@@ -1,33 +1,16 @@
 import { FastifyInstance } from 'fastify';
+import { Type, Static } from '@sinclair/typebox';
 
-const bodyJsonSchema = {
-  type: 'object',
-  required: ['requiredKey'],
-  properties: {
-    someKey: { type: 'string' },
-    someOtherKey: { type: 'number' },
-    requiredKey: {
-      type: 'array',
-      maxItems: 3,
-      items: { type: 'integer' }
-    },
-    nullableKey: { type: ['number', 'null'] }, // or { type: 'number', nullable: true }
-    multipleTypesKey: { type: ['boolean', 'number'] },
-    multipleRestrictedTypesKey: {
-      oneOf: [
-        { type: 'string', maxLength: 5 },
-        { type: 'number', minimum: 10 }
-      ]
-    },
-    enumKey: {
-      type: 'string',
-      enum: ['John', 'Foo']
-    },
-    notTypeKey: {
-      not: { type: 'array' }
-    }
-  }
-};
+// The typescript type representing the below json schema
+type TSBody = Static<typeof bodyJsonSchemaBox>;
+
+const bodyJsonSchemaBox = Type.Object({
+  someKey: Type.Optional(Type.String()),
+  someOtherKey: Type.Number({ maximum: 999 }),
+  arrayKey: Type.Array(Type.Number(), { maxItems: 3 }),
+  nullableKey: Type.Union([Type.Number(), Type.Null()]),
+  multipleTypesKey: Type.Union([Type.Number(), Type.Boolean()])
+});
 
 const queryStringJsonSchema = {
   type: 'object',
@@ -54,7 +37,7 @@ const headersJsonSchema = {
 };
 
 const schema = {
-  body: bodyJsonSchema,
+  body: bodyJsonSchemaBox,
   querystring: queryStringJsonSchema,
   params: paramsJsonSchema,
   headers: headersJsonSchema
