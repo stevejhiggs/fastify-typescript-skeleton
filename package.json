@@ -13,7 +13,12 @@
     "test": "jest --collectCoverageFrom='src/**/*.ts' --coverage",
     "test:watch": "jest --collectCoverageFrom='src/**/*.ts' --watch",
     "startProduction": "node .dist/listener.js",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'"
+    "prettier": "./node_modules/.bin/prettier --write '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
+    "prettier-check": "./node_modules/.bin/prettier --check '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
+    "eslint-check": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "eslint": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
+    "lint": "yarn prettier && yarn eslint",
+    "lint-check": "yarn eslint-check && yarn prettier-check"
   },
   "repository": {
     "type": "git",
@@ -35,16 +40,57 @@
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.2",
     "@types/pino": "^6.3.3",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "eslint": "^7.12.0",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.6.1",
     "nodemon": "^2.0.6",
     "pino-pretty": "^4.3.0",
     "prettier": "^2.1.2",
-    "tap": "^14.10.8",
     "ts-jest": "^26.4.2",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   },
   "jest": {
     "preset": "ts-jest"
+  },
+  "prettier": {
+    "printWidth": 250,
+    "trailingComma": "none",
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "ignorePatterns": [
+      "node_modules",
+      "lib/**/*",
+      "coverage/**/*"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2019,
+      "sourceType": "module"
+    },
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "prettier/@typescript-eslint",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "no-debugger": 2,
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/ban-ts-comment": 0,
+      "@typescript-eslint/camelcase": 0,
+      "@typescript-eslint/no-unused-vars": 0,
+      "@typescript-eslint/explicit-module-boundary-types": 0,
+      "react-hooks/exhaustive-deps": 0
+    }
   }
 }

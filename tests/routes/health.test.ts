@@ -10,6 +10,7 @@ describe('endpoints -> health', () => {
   });
 
   afterEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     app.close(() => {});
   });
 
