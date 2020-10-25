@@ -1,11 +1,11 @@
-import { Server, IncomingMessage, ServerResponse } from 'http';
 import { FastifyInstance } from 'fastify';
 import getServer from '../../src/server';
 
 describe('endpoints -> health', () => {
-  let app: FastifyInstance<Server, IncomingMessage, ServerResponse>;
+  let app: FastifyInstance;
 
   beforeEach(() => {
+    // allows us to spin up the server in memory
     app = getServer();
   });
 
