@@ -1,10 +1,10 @@
 import fastify from 'fastify';
 import helmet from 'fastify-helmet';
-import fastifyOas from 'fastify-oas';
+import fastifyOas, { FastifyOASOptions } from 'fastify-oas';
 
 import registerRoutes from './routes';
 
-export default function getServer() {
+export default function getServer(port = '3000') {
   const app = fastify({
     ignoreTrailingSlash: true,
     logger: true
@@ -17,12 +17,13 @@ export default function getServer() {
   app.register(fastifyOas, {
     swagger: {
       info: {
-        title: 'My cool API',
+        title: 'Fastify skeleton api',
         version: '1.0.0'
-      }
+      },
+      host: `localhost:${port}`
     },
     exposeRoute: true
-  });
+  } as FastifyOASOptions);
 
   registerRoutes(app);
 
