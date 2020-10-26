@@ -38,6 +38,11 @@ The api you can get working just by running `yarn` to install the package and th
 - `yarn build` - fully build the api as js and output it to the lib directory
 - `yarn startProduction` - run the built app in the lib directory
 
+### Environment variables
+
+- `DISABLE_DOCS` - if set to true then the /documentation endpoint is disabled. Defaults to false
+- `LOG_LEVEL` - sets the logging level. This can be debug, error, warn, info. Defaults to info.
+
 ### Running tests
 
 All the tests are in `/tests` and can be ran by running `yarn test`
