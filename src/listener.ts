@@ -10,7 +10,7 @@ const port: string = process.env.PORT || '3000';
 const start = async () => {
   try {
     const app = getServer(port);
-    await app.listen(port);
+    await app.listen(port, '::');
     const currentAddress = app.server.address() as AddressInfo;
     app.log.info(`server listening on http://${currentAddress.address}:${currentAddress.port}`);
   } catch (err) {
