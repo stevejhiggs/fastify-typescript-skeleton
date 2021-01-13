@@ -25,7 +25,7 @@ This is an example of what I would consider to be a production ready node api. T
 
 ### Running locally
 
-The api you can get working just by running `yarn` to install the package and then `yarn start` to start the api. For the emulator we have two choices:
+The api you can get working just by running `yarn` to install the package and then `yarn start` to start the api. You can then access the api on http://localhost:3000. E.g make a GET to http://localhost:3000/health
 
 ### Other commands
 
