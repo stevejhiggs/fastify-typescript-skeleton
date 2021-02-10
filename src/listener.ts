@@ -13,8 +13,8 @@ const start = async () => {
     await app.listen(port, '::');
     const currentAddress = app.server.address() as AddressInfo;
     app.log.info(`server listening on http://${currentAddress.address}:${currentAddress.port}`);
-  } catch (err) {
-    logger.error(err);
+  } catch (error) {
+    logger.error(error);
   }
 };
 

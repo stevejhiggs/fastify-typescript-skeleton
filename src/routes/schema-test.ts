@@ -19,7 +19,7 @@ const querystringSchema = Type.Object({
   excitement: Type.Optional(Type.Integer())
 });
 
-const paramsSchema = Type.Object({
+const parametersSchema = Type.Object({
   par1: Type.String(),
   par2: Type.Number()
 });
@@ -39,7 +39,7 @@ const responseSchema = Type.Object({
 const schema: FastifySchema = {
   body: bodySchema,
   querystring: querystringSchema,
-  params: paramsSchema,
+  params: parametersSchema,
   headers: headersSchema,
   response: {
     200: responseSchema
@@ -49,7 +49,7 @@ const schema: FastifySchema = {
 // The typescript types representing the above json schemas
 type Body = Static<typeof bodySchema>;
 type Query = Static<typeof querystringSchema>;
-type Params = Static<typeof paramsSchema>;
+type Parameters_ = Static<typeof parametersSchema>;
 type Headers = Static<typeof headersSchema>;
 type Reply = Static<typeof responseSchema>;
 
@@ -57,10 +57,10 @@ export default function registerRoutes(app: FastifyInstance) {
   app.post<{
     Querystring: Query;
     Headers: Headers;
-    Params: Params;
+    Params: Parameters_;
     Body: Body;
     Reply: Reply;
-  }>('/schemaTest/:par1/:par2', { schema }, async (request, reply) => {
+  }>('/schema-test/:par1/:par2', { schema }, async (request, reply) => {
     reply.send({
       par1: request.params.par1,
       par2: request.params.par2,

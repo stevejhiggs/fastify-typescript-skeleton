@@ -31,10 +31,10 @@ The api you can get working just by running `yarn` to install the package and th
 
 - `yarn start` - start the api running locally.
 - `yarn watch` - start the api in watch mode, changing any files will auto restart the api.
-- `yarn test` - run tests
-- `yarn test:watch` - run tests in watch mode, changing any files will auto rerun the tests.
+- `yarn test:ci` - run tests
+- `yarn test` - run tests in watch mode, changing any files will auto rerun the tests.
 - `yarn lint` - run prettier and eslint and auto-fix any issues
-- `yarn lint-check` - run prettier and eslint and report issues
+- `yarn lint:ci` - run prettier and eslint and report issues
 - `yarn build` - fully build the api as js and output it to the lib directory
 - `yarn startProduction` - run the built app in the lib directory
 
