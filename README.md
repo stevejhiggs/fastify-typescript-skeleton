@@ -20,7 +20,7 @@ This is an example of what I would consider to be a production ready node api. T
 
 ### Requirements
 
-- Node.js 12.x (https://nodejs.org/en/)
+- Node.js 14.x (https://nodejs.org/en/)
 - Yarn (https://yarnpkg.com/en/)
 
 ### Running locally
