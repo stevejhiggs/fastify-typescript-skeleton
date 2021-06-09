@@ -18,7 +18,9 @@
     "eslint:ci": "eslint '**/*.{js,jsx,ts,tsx}'",
     "eslint": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
     "lint": "yarn prettier && yarn eslint",
-    "lint:ci": "yarn eslint:ci && yarn prettier:ci"
+    "lint:ci": "yarn eslint:ci && yarn prettier:ci",
+    "prepare": "husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
+    "pre-commit": "yarn lint-staged"
   },
   "repository": {
     "type": "git",
@@ -51,7 +53,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-unicorn": "^33.0.1",
     "eslint-plugin-unused-imports": "^1.1.1",
-    "husky": "4.x",
+    "husky": "^6.0.0",
     "jest": "^27.0.4",
     "lint-staged": "^10.5.4",
     "nodemon": "^2.0.7",
@@ -106,11 +108,6 @@
     "printWidth": 250,
     "trailingComma": "none",
     "singleQuote": true
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
