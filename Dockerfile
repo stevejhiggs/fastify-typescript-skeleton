@@ -3,12 +3,12 @@ FROM node:14-alpine AS build-env
 
 WORKDIR /opt/api
 COPY package.json yarn.lock ./
-RUN yarn --pure-lockfile
+RUN yarn --frozen-lockfile
 # Bundle app source
 COPY . .
 RUN yarn build
 # just use production packages
-RUN rm -rf ./node_modules && yarn --pure-lockfile --production
+RUN rm -rf ./node_modules && yarn --frozen-lockfile --production
 
 # re-start from a blank alpine image
 FROM node:14-alpine
