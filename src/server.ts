@@ -1,6 +1,9 @@
+import './opentelemetry';
+
 import fastify from 'fastify';
 import helmet from 'fastify-helmet';
 import fastifyOas, { FastifyOASOptions } from 'fastify-oas';
+import fastifyOpentelemetry from '@autotelic/fastify-opentelemetry';
 
 import registerRoutes from './routes';
 
@@ -11,6 +14,8 @@ export default function getServer(port = '3000') {
       level: process.env.LOG_LEVEL || 'info'
     }
   });
+
+  app.register(fastifyOpentelemetry, { serviceName: 'basic-example', wrapRoutes: true });
 
   // add security headers
   app.register(helmet);
