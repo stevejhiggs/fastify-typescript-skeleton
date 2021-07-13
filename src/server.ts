@@ -1,6 +1,6 @@
 import fastify from 'fastify';
 import helmet from 'fastify-helmet';
-import fastifyOas, { FastifyOASOptions } from 'fastify-oas';
+import fastifySwagger, { SwaggerOptions } from 'fastify-swagger';
 
 import registerRoutes from './routes';
 
@@ -17,7 +17,7 @@ export default function getServer(port = '3000') {
 
   // adds open api documentations at /documentation
   if (process.env.DISABLE_DOCS !== 'true')
-    app.register(fastifyOas, {
+    app.register(fastifySwagger, {
       swagger: {
         info: {
           title: 'Fastify skeleton api',
@@ -25,8 +25,9 @@ export default function getServer(port = '3000') {
         },
         host: `localhost:${port}`
       },
+      staticCSP: true,
       exposeRoute: true
-    } as FastifyOASOptions);
+    } as SwaggerOptions);
 
   registerRoutes(app);
 
