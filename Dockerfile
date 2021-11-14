@@ -1,5 +1,5 @@
 
-FROM node:14-alpine AS build-env
+FROM node:16-alpine AS build-env
 
 WORKDIR /opt/api
 COPY package.json yarn.lock ./
@@ -11,7 +11,7 @@ RUN yarn build
 RUN rm -rf ./node_modules && yarn --frozen-lockfile --production
 
 # re-start from a blank alpine image
-FROM node:14-alpine
+FROM node:16-alpine
 WORKDIR /opt/api
 # copy the build artifacts
 COPY --from=build-env /opt/api .
