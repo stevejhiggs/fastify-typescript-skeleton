@@ -11,7 +11,7 @@
     "start": "node ./index.js | pino-pretty",
     "build": "tsc",
     "test:ci": "LOG_LEVEL=warn jest --collectCoverageFrom='src/**/*.ts' --coverage",
-    "test": "LOG_LEVEL=warn jest",
+    "test": "LOG_LEVEL=warn jest --watch-all",
     "startProduction": "node lib/src/listener.js",
     "prettier": "./node_modules/.bin/prettier --write '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
     "prettier:ci": "./node_modules/.bin/prettier --check '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
