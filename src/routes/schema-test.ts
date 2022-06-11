@@ -4,8 +4,8 @@ import type { EnhancedFastifyInstance } from '../types';
 // Typebox can generate both json schema and typescript types
 // the json schemas are checked at runtime, the ts schemas at compile time.
 // You don't have to use all of these on each request.
-// By passing the json schemas to the fastify route register call we get auto
-// request checking and documentation
+// We've enabled the typebox schema provider so we can just pass the typebox schema
+// directly in and get runtime + build time checking
 const schema = {
   body: Type.Object({
     someKey: Type.Optional(Type.String()),
