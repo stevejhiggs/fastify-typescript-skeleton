@@ -4,8 +4,14 @@ import fastifySwagger, { SwaggerOptions } from '@fastify/swagger';
 
 import registerRoutes from './routes';
 
-export default function getServer(port = '3000') {
+export default function getServer(port = 3000) {
   const app = fastify({
+    ajv: {
+      customOptions: {
+        strict: 'log',
+        keywords: ['kind', 'modifier']
+      }
+    },
     ignoreTrailingSlash: true,
     logger: {
       level: process.env.LOG_LEVEL || 'info'
