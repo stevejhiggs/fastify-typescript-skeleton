@@ -1,5 +1,5 @@
 import fastify from 'fastify';
-import helmet from 'fastify-helmet';
+import helmet from '@fastify/helmet';
 import fastifySwagger, { SwaggerOptions } from '@fastify/swagger';
 
 import registerRoutes from './routes';
