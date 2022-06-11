@@ -1,8 +1,8 @@
-import { FastifyInstance } from 'fastify';
 import getServer from '../../src/server';
+import { EnhancedFastifyInstance } from '../../src/types';
 
 describe('endpoints -> health', () => {
-  let app: FastifyInstance;
+  let app: EnhancedFastifyInstance;
 
   beforeEach(() => {
     // allows us to spin up the server in memory

@@ -1,22 +1,21 @@
 import fastify from 'fastify';
 import helmet from '@fastify/helmet';
 import fastifySwagger, { SwaggerOptions } from '@fastify/swagger';
+import { ajvTypeBoxPlugin, TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 
 import registerRoutes from './routes';
+import { EnhancedFastifyInstance } from './types';
 
 export default function getServer(port = 3000) {
   const app = fastify({
     ajv: {
-      customOptions: {
-        strict: 'log',
-        keywords: ['kind', 'modifier']
-      }
+      plugins: [ajvTypeBoxPlugin]
     },
     ignoreTrailingSlash: true,
     logger: {
       level: process.env.LOG_LEVEL || 'info'
     }
-  });
+  }).withTypeProvider<TypeBoxTypeProvider>();
 
   // add security headers
   app.register(helmet);
@@ -35,7 +34,7 @@ export default function getServer(port = 3000) {
       exposeRoute: true
     } as SwaggerOptions);
 
-  registerRoutes(app);
+  registerRoutes(app as EnhancedFastifyInstance);
 
   return app;
 }
