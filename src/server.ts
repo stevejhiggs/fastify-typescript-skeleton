@@ -6,7 +6,7 @@ import { ajvTypeBoxPlugin, TypeBoxTypeProvider } from '@fastify/type-provider-ty
 import registerRoutes from './routes';
 import { EnhancedFastifyInstance } from './types';
 
-export default function getServer(port = 3000) {
+export default async function getServer(port = 3000) {
   const app = fastify({
     ajv: {
       plugins: [ajvTypeBoxPlugin]
@@ -18,11 +18,11 @@ export default function getServer(port = 3000) {
   }).withTypeProvider<TypeBoxTypeProvider>();
 
   // add security headers
-  app.register(helmet);
+  await app.register(helmet);
 
   // adds open api documentations at /documentation
   if (process.env.DISABLE_DOCS !== 'true')
-    app.register(fastifySwagger, {
+    await app.register(fastifySwagger, {
       swagger: {
         info: {
           title: 'Fastify skeleton api',

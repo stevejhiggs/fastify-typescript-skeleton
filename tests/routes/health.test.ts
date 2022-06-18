@@ -4,9 +4,9 @@ import { EnhancedFastifyInstance } from '../../src/types';
 describe('endpoints -> health', () => {
   let app: EnhancedFastifyInstance;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     // allows us to spin up the server in memory
-    app = getServer();
+    app = await getServer();
   });
 
   afterEach(() => {

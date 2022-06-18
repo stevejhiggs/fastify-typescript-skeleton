@@ -9,7 +9,7 @@ const port: number = Number.parseInt(process.env.PORT || '3000');
 // to be used within tests without needed a network connection
 const start = async () => {
   try {
-    const app = getServer(port);
+    const app = await getServer(port);
     await app.listen({ port, host: '::' });
     const currentAddress = app.server.address() as AddressInfo;
     app.log.info(`server listening on http://${currentAddress.address}:${currentAddress.port}`);
