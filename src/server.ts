@@ -1,4 +1,4 @@
-import fastify from 'fastify';
+import { fastify } from 'fastify';
 import helmet from '@fastify/helmet';
 import fastifySwagger, { SwaggerOptions } from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
