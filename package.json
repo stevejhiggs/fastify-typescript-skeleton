@@ -8,7 +8,7 @@
   },
   "scripts": {
     "watch": "./node_modules/.bin/nodemon -e ts,json --exec 'yarn run start'",
-    "start": "node ./index.js | pino-pretty",
+    "start": "node --loader esbuild-register/loader -r esbuild-register ./src/listener.ts | pino-pretty",
     "build": "tsc",
     "test": "LOG_LEVEL=warn vitest --dir tests",
     "test:ci": "npm run test -- --coverage",
