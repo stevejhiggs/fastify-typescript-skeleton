@@ -45,7 +45,7 @@ The api you can get working just by running `yarn` to install the package and th
 
 ### Running tests
 
-All the tests are in `/tests` and can be ran by running `yarn test`
+All the tests are co-located with the source files and can be ran by running `yarn test`
 
 ## Available routes
 
