@@ -2,12 +2,13 @@
   "compilerOptions": {
     "declaration": true,
     "sourceMap": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
     "strict": true,
     "esModuleInterop": true,
-    "target": "es2021",
-    "lib": ["es5", "es6", "dom"],
+    "target": "ES2022",
+    "lib": ["ES2022"],
     "outDir": "lib",
     "resolveJsonModule": true
   },
