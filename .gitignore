@@ -49,7 +49,9 @@ profile-*
 .idea
 
 # vscode
-.vscode
+.vscode/*
+# allow launch.json
+!.vscode/launch.json 
 *code-workspace
 
 # clinic
