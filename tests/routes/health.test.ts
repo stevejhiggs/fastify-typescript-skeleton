@@ -1,3 +1,5 @@
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+
 import getServer from '../../src/server';
 import { EnhancedFastifyInstance } from '../../src/types';
 
