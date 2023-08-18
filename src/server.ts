@@ -2,7 +2,7 @@ import { fastify } from 'fastify';
 import helmet from '@fastify/helmet';
 import fastifySwagger, { SwaggerOptions } from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
-import { TypeBoxTypeProvider, TypeBoxValidatorCompiler } from '@fastify/type-provider-typebox';
+import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 
 import registerRoutes from './routes';
 import { EnhancedFastifyInstance } from './types';
@@ -13,9 +13,7 @@ export default async function getServer(port = 3000) {
     logger: {
       level: process.env.LOG_LEVEL || 'info'
     }
-  })
-    .withTypeProvider<TypeBoxTypeProvider>()
-    .setValidatorCompiler(TypeBoxValidatorCompiler);
+  }).withTypeProvider<TypeBoxTypeProvider>();
 
   // add security headers
   await app.register(helmet);

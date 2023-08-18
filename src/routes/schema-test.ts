@@ -1,4 +1,5 @@
 import { Type } from '@sinclair/typebox';
+import { FastifySchema } from 'fastify';
 import type { EnhancedFastifyInstance } from '../types';
 
 // Typebox can generate both json schema and typescript types
@@ -34,11 +35,11 @@ const postSchema = {
       someOtherKey: Type.Number()
     })
   }
-};
+} satisfies FastifySchema;
 
 const getSchema = {
   querystring: Type.Object({
-    name: Type.String(),
+    date: Type.String({ format: 'date' }),
     excitement: Type.Optional(Type.Integer())
   }),
   params: Type.Object({
@@ -49,11 +50,11 @@ const getSchema = {
     200: Type.Object({
       par1: Type.String(),
       par2: Type.Number(),
-      queryName: Type.String(),
+      queryDate: Type.String({ format: 'date' }),
       someOtherKey: Type.Number()
     })
   }
-};
+} satisfies FastifySchema;
 
 export default function registerRoutes(app: EnhancedFastifyInstance) {
   app.post('/schema-test/post/:par1/:par2', { schema: postSchema }, async (request, reply) => {
@@ -70,7 +71,7 @@ export default function registerRoutes(app: EnhancedFastifyInstance) {
     reply.send({
       par1: request.params.par1,
       par2: request.params.par2,
-      queryName: request.query.name,
+      queryDate: request.query.date,
       someOtherKey: 100
     });
   });
