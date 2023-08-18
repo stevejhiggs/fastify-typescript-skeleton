@@ -6,7 +6,7 @@ import type { EnhancedFastifyInstance } from '../types';
 // You don't have to use all of these on each request.
 // We've enabled the typebox schema provider so we can just pass the typebox schema
 // directly in and get runtime + build time checking
-const schema = {
+const postSchema = {
   body: Type.Object({
     someKey: Type.Optional(Type.String()),
     someOtherKey: Type.Number({ maximum: 999 }),
@@ -36,14 +36,42 @@ const schema = {
   }
 };
 
+const getSchema = {
+  querystring: Type.Object({
+    name: Type.String(),
+    excitement: Type.Optional(Type.Integer())
+  }),
+  params: Type.Object({
+    par1: Type.String(),
+    par2: Type.Number()
+  }),
+  response: {
+    200: Type.Object({
+      par1: Type.String(),
+      par2: Type.Number(),
+      queryName: Type.String(),
+      someOtherKey: Type.Number()
+    })
+  }
+};
+
 export default function registerRoutes(app: EnhancedFastifyInstance) {
-  app.post('/schema-test/:par1/:par2', { schema }, async (request, reply) => {
+  app.post('/schema-test/post/:par1/:par2', { schema: postSchema }, async (request, reply) => {
     reply.send({
       par1: request.params.par1,
       par2: request.params.par2,
       queryName: request.query.name,
       foo: request.headers['x-foo'],
       someOtherKey: request.body.someOtherKey
+    });
+  });
+
+  app.get('/schema-test/get/:par1/:par2', { schema: getSchema }, async (request, reply) => {
+    reply.send({
+      par1: request.params.par1,
+      par2: request.params.par2,
+      queryName: request.query.name,
+      someOtherKey: 100
     });
   });
 }
