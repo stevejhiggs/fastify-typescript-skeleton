@@ -3,22 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "watch": "./node_modules/.bin/nodemon -e ts,json --exec 'yarn run start'",
+    "watch": "./node_modules/.bin/nodemon -e ts,json --exec 'pnpm run start'",
     "start": "node ./index.js | pino-pretty",
     "start:production": "node lib/src/listener.js",
     "build": "tsc -p tsconfig.build.json",
     "test": "LOG_LEVEL=warn vitest --dir src",
-    "test:ci": "npm run test -- --coverage",
+    "test:ci": "pnpm run test -- --coverage",
     "typecheck": "tsc --noEmit",
     "format": "./node_modules/.bin/prettier --write '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
     "lint:ci": "eslint '**/*.{js,jsx,ts,tsx}'",
-    "lint": "npm run lint:ci -- --fix",
+    "lint": "pnpm run lint:ci --fix",
     "prepare": "husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
-    "pre-commit": "yarn lint-staged"
+    "pre-commit": "pnpm lint-staged"
   },
   "repository": {
     "type": "git",
