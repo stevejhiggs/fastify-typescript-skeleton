@@ -15,7 +15,7 @@
     "lint:ci": "eslint '**/*.{js,jsx,ts,tsx}'",
     "lint": "bun run lint:ci --fix",
     "prepare": "bun -b husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
-    "pre-commit": "bun -b lint-staged"
+    "pre-commit": "bun lint-staged"
   },
   "repository": {
     "type": "git",
