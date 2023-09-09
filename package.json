@@ -5,18 +5,17 @@
   "main": "lib/listener.js",
   "type": "module",
   "scripts": {
-    "watch": "node --import tsx --watch-path=./src ./index.ts | pino-pretty ",
-    "start": "node --import tsx ./index.ts | pino-pretty",
-    "start:production": "node lib/listener.js",
-    "build": "tsc -p tsconfig.build.json",
-    "test": "LOG_LEVEL=warn node --test --import tsx ./src/**/*.test.ts",
-    "test:ci": "LOG_LEVEL=warn NODE_V8_COVERAGE=src node --test --experimental-test-coverage --import tsx ./src/**/*.test.ts",
-    "typecheck": "tsc --noEmit",
-    "format": "./node_modules/.bin/prettier --write '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
+    "start": "bun ./index.ts | pino-pretty",
+    "start:production": "bun ./index.ts",
+    "build": "bun -b tsc -p tsconfig.build.json",
+    "test": "LOG_LEVEL=warn bun vitest --dir src",
+    "test:ci": "bun run test -- --coverage",
+    "typecheck": "bun -b tsc --noEmit",
+    "format": "bun -b prettier --write '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
     "lint:ci": "eslint '**/*.{js,jsx,ts,tsx}'",
-    "lint": "pnpm run lint:ci --fix",
-    "prepare": "husky",
-    "pre-commit": "pnpm lint-staged"
+    "lint": "bun run lint:ci --fix",
+    "prepare": "bun -b husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
+    "pre-commit": "bun -b lint-staged"
   },
   "repository": {
     "type": "git",
