@@ -1,5 +1,4 @@
-import assert from 'node:assert';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 
 import getServer from '../server.js';
 import type { EnhancedFastifyInstance } from '../types.js';
