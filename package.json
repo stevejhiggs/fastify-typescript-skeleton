@@ -2,7 +2,7 @@
   "name": "fastify-example",
   "version": "1.0.0",
   "description": "",
-  "main": "src/listener.js",
+  "main": "lib/listener.js",
   "type": "module",
   "scripts": {
     "watch": "node --loader ts-node/esm --watch-path=./src ./index.ts | pino-pretty ",
