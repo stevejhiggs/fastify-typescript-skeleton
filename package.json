@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "watch": "./node_modules/.bin/nodemon -e ts,json --exec 'pnpm run start'",
-    "start": "node ./index.js | pino-pretty",
+    "start": "node --loader ts-node/esm ./index.ts | pino-pretty",
     "start:production": "node lib/listener.js",
     "build": "tsc -p tsconfig.build.json",
     "test": "LOG_LEVEL=warn vitest --dir src",
@@ -44,7 +44,6 @@
     "@typescript-eslint/parser": "^6.8.0",
     "@vitest/coverage-c8": "^0.28.3",
     "esbuild": "^0.19.5",
-    "esbuild-register": "^3.5.0",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
@@ -57,6 +56,7 @@
     "nodemon": "^3.0.1",
     "pino-pretty": "^10.2.3",
     "prettier": "^3.0.3",
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
     "vitest": "^0.34.6"
