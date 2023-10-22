@@ -13,9 +13,9 @@
     "typecheck": "bun -b tsc --noEmit",
     "format": "bun -b prettier --write '**/*.{js,jsx,ts,tsx,css,html,yaml,json,md}'",
     "lint:ci": "bun -b eslint '**/*.{js,jsx,ts,tsx}'",
-    "lint": "bun run lint:ci --fix",
+    "lint": "bun -b run lint:ci --fix",
     "prepare": "bun -b husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
-    "pre-commit": "bun lint-staged"
+    "pre-commit": "bun -b lint-staged"
   },
   "repository": {
     "type": "git",
