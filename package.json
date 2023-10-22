@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "watch": "./node_modules/.bin/nodemon -e ts,json --exec 'pnpm run start'",
     "start": "node ./index.js | pino-pretty",
-    "start:production": "node lib/src/listener.js",
+    "start:production": "node lib/listener.js",
     "build": "tsc -p tsconfig.build.json",
     "test": "LOG_LEVEL=warn vitest --dir src",
     "test:ci": "pnpm run test -- --coverage",

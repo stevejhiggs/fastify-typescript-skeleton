@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import getServer from '../server';
-import { EnhancedFastifyInstance } from '../types';
+import getServer from '../server.js';
+import { EnhancedFastifyInstance } from '../types.js';
 
 describe('endpoints -> health', () => {
   let app: EnhancedFastifyInstance;
