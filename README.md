@@ -9,7 +9,7 @@ This is an example of what I would consider to be a production ready node api. T
 - Typescript is removed from production builds
 - json schemas used for automatic api request validity checking
 - helmet security headers
-- vitest based tests that support both unit and in-memory integration tests. Tests are also written in typescript
+- native node test based tests that support both unit and in-memory integration tests. Tests are also written in typescript
 - automatic test coverage collection
 - pre-configured linting with eslint + prettier
 - logging all set up
