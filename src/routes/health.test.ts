@@ -23,7 +23,7 @@ describe('endpoints -> health', () => {
         url: '/health'
       });
 
-      assert.strictEqual(result.statusCode, 200);
+      expect(result.statusCode).toBe(200);
     });
 
     it('should return a 404 with a POST request', async () => {
@@ -32,7 +32,7 @@ describe('endpoints -> health', () => {
         url: '/health'
       });
 
-      assert.strictEqual(result.statusCode, 404);
+      expect(result.statusCode).toBe(404);
     });
   });
 });
