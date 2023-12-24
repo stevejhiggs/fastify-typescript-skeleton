@@ -7,7 +7,7 @@
   "scripts": {
     "start": "bun ./index.ts | pino-pretty",
     "start:production": "bun ./index.ts",
-    "build": "bun -b tsc -p tsconfig.build.json",
+    "build": "bun -b tsc -p tsconfig.json",
     "test": "LOG_LEVEL=warn bun test",
     "test:ci": "bun run test -- --coverage",
     "typecheck": "bun -b tsc --noEmit",
@@ -38,7 +38,7 @@
     "pino": "^9.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.7",
+    "@types/bun": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
     "eslint": "^9.1.1",
@@ -52,7 +52,6 @@
     "lint-staged": "^15.2.2",
     "pino-pretty": "^11.0.0",
     "prettier": "^3.2.5",
-    "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   },
   "prettier": {
@@ -62,10 +61,10 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
+      "bun -b eslint --fix"
     ],
     "**/*.{css,html,json,md}": [
-      "prettier --write"
+      "bun -b prettier --write"
     ]
   }
 }
