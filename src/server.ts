@@ -1,11 +1,11 @@
-import { fastify } from 'fastify';
 import helmet from '@fastify/helmet';
-import fastifySwagger, { SwaggerOptions } from '@fastify/swagger';
+import fastifySwagger, { type SwaggerOptions } from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
-import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
+import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
+import { fastify } from 'fastify';
 
 import registerRoutes from './routes/index.js';
-import { EnhancedFastifyInstance } from './types.js';
+import type { EnhancedFastifyInstance } from './types.js';
 
 export default async function getServer(port = 3000) {
   const app = fastify({

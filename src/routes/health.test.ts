@@ -1,8 +1,8 @@
-import { afterEach, beforeEach, describe, it } from 'node:test';
 import assert from 'node:assert';
+import { afterEach, beforeEach, describe, it } from 'node:test';
 
 import getServer from '../server.js';
-import { EnhancedFastifyInstance } from '../types.js';
+import type { EnhancedFastifyInstance } from '../types.js';
 
 describe('endpoints -> health', () => {
   let app: EnhancedFastifyInstance;
@@ -13,7 +13,7 @@ describe('endpoints -> health', () => {
   });
 
   afterEach(() => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    // biome-ignore lint/suspicious/noEmptyBlockStatements: close requires a callback
     app.close(() => {});
   });
 

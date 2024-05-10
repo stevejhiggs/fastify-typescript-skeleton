@@ -1,5 +1,5 @@
 import { Type } from '@sinclair/typebox';
-import { FastifySchema } from 'fastify';
+import type { FastifySchema } from 'fastify';
 import type { EnhancedFastifyInstance } from '../types.js';
 
 // Typebox can generate both json schema and typescript types
