@@ -1,6 +1,6 @@
 import type { AddressInfo } from 'node:net';
-import logger from './logger.js';
-import getServer from './server.js';
+import logger from './logger';
+import getServer from './server';
 
 const port: number = Number.parseInt(process.env.PORT || '3000');
 

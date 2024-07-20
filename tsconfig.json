@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
     "skipLibCheck": true,
     "strict": true,
     "esModuleInterop": true,

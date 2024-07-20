@@ -4,8 +4,8 @@ import fastifySwaggerUi from '@fastify/swagger-ui';
 import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 import { fastify } from 'fastify';
 
-import registerRoutes from './routes/index.js';
-import type { EnhancedFastifyInstance } from './types.js';
+import registerRoutes from './routes/index';
+import type { EnhancedFastifyInstance } from './types';
 
 export default async function getServer(port = 3000) {
   const app = fastify({

@@ -1,8 +1,8 @@
 import assert from 'node:assert';
 import { afterEach, beforeEach, describe, it } from 'node:test';
 
-import getServer from '../server.js';
-import type { EnhancedFastifyInstance } from '../types.js';
+import getServer from '../server';
+import type { EnhancedFastifyInstance } from '../types';
 
 describe('endpoints -> health', () => {
   let app: EnhancedFastifyInstance;

@@ -1,4 +1,4 @@
-import type { EnhancedFastifyInstance } from '../types.js';
+import type { EnhancedFastifyInstance } from '../types';
 
 export default function registerRoutes(app: EnhancedFastifyInstance) {
   app.get('/health', async (_request, reply) => {
