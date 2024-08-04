@@ -7,7 +7,7 @@
     "lineEnding": "lf",
     "lineWidth": 250,
     "attributePosition": "auto",
-    "ignore": ["**/coverage", "**/lib", "**/node_modules"]
+    "ignore": ["**/coverage", "**/lib", "**/node_modules"],
   },
   "linter": {
     "enabled": true,
@@ -22,7 +22,7 @@
         "noUselessSwitchCase": "error",
         "noWith": "error",
         "useArrowFunction": "off",
-        "useFlatMap": "error"
+        "useFlatMap": "error",
       },
       "correctness": {
         "noConstAssign": "error",
@@ -47,18 +47,18 @@
         "noUnusedVariables": "error",
         "useIsNan": "error",
         "useValidForDirection": "error",
-        "useYield": "error"
+        "useYield": "error",
       },
       "style": {
         "noNegationElse": "off",
         "useBlockStatements": "off",
         "useFilenamingConvention": {
           "level": "error",
-          "options": { "requireAscii": true, "filenameCases": ["kebab-case"] }
+          "options": { "requireAscii": true, "filenameCases": ["kebab-case"] },
         },
         "useForOf": "error",
         "useNodejsImportProtocol": "error",
-        "useNumberNamespace": "error"
+        "useNumberNamespace": "error",
       },
       "suspicious": {
         "noAssignInExpressions": "error",
@@ -85,9 +85,9 @@
         "noUnsafeNegation": "error",
         "useGetterReturn": "error",
         "useIsArray": "error",
-        "useValidTypeof": "error"
-      }
-    }
+        "useValidTypeof": "error",
+      },
+    },
   },
   "javascript": {
     "formatter": {
@@ -99,9 +99,9 @@
       "bracketSpacing": true,
       "bracketSameLine": false,
       "quoteStyle": "single",
-      "attributePosition": "auto"
+      "attributePosition": "auto",
     },
-    "globals": []
+    "globals": [],
   },
   "overrides": [
     {
@@ -114,10 +114,10 @@
           "suspicious": {
             "noConsoleLog": "error",
             "noDebugger": "error",
-            "noExplicitAny": "off"
-          }
-        }
-      }
-    }
-  ]
+            "noExplicitAny": "off",
+          },
+        },
+      },
+    },
+  ],
 }
