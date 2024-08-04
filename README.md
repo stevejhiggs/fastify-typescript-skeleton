@@ -37,6 +37,7 @@ The api you can get working just by running `pnpm i` to install the package and 
 - `pnpm lint:ci` - run prettier and eslint and report issues
 - `pnpm build` - fully build the api as js and output it to the lib directory
 - `pnpm start:production` - run the built app in the lib directory
+- `pnpm setup-commit-hooks` - enables precommit hooks to lint and typecheck
 
 ### Environment variables
 

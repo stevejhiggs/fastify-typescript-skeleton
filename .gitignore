@@ -59,6 +59,6 @@ profile*
 *clinic*
 *flamegraph*
 
-lib
+dist
 
 coverage-*.json

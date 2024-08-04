@@ -1,24 +1,32 @@
+FROM node:20-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+COPY ./package.json /app/package.json
+COPY ./pnpm-lock.yaml /app/pnpm-lock.yaml
+WORKDIR /app
 
-FROM node:20-alpine AS build-env
+# Strip out dev dependencies
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
-WORKDIR /opt/api
-COPY package.json yarn.lock ./
-RUN pnpm i --frozen-lockfile
-# Bundle app source
-COPY . .
-RUN pnpm build
-# just use production packages
-RUN rm -rf ./node_modules && pnpm i --frozen-lockfile --production
+# Build the app
+FROM base AS build
+COPY . /app
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm run build
 
-# re-start from a blank alpine image
-FROM node:20-alpine
-WORKDIR /opt/api
-# copy the build artifacts
-COPY --from=build-env /opt/api .
+# Final image
+FROM node:20-slim
 
-# create a user to run as
-RUN addgroup --gid 1001 -S api && adduser --uid 1001 -S -G api api
-USER 1001
+COPY --from=base /app /app
+COPY --from=prod-deps /app/node_modules /app/node_modules
+COPY --from=build /app/dist /app/dist
+WORKDIR /app
 
+# Run as non-root user
+USER node
 EXPOSE 3000
-ENTRYPOINT ["yarn", "run", "startProduction"]
+CMD [ "node", "dist/listener.js" ]
+
+
