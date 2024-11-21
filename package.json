@@ -50,5 +50,5 @@
       "bun -b biome check --write --no-errors-on-unmatched"
     ]
   },
-  "packageManager": "bun@1.1.21"
+  "packageManager": "bun@1.1.36"
 }
