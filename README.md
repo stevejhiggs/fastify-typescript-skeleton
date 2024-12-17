@@ -20,16 +20,17 @@ This is an example of what I would consider to be a production ready node api. T
 
 ### Requirements
 
-- Node.js 18.x (https://nodejs.org/en/)
-- pnpm (https://pnpm.io/)
+- bun (https://bun.sh/)
+
+(There is a pnpm version of this repo on the "pnpm" branch)
 
 ### Running locally
 
-The api you can get working just by running `pnpm i` to install the package and then `pnpm start` to start the api. You can then access the api on http://localhost:3000. E.g make a GET to http://localhost:3000/health
+The api you can get working just by running `bun i` to install the package and then `bun start` to start the api. You can then access the api on http://localhost:3000. E.g make a GET to http://localhost:3000/health
 
 ### Other commands
 
-- `pnpm start` - start the api running locally.
+- `bun start` - start the api running locally.
 - `pnpm watch` - start the api in watch mode, changing any files will auto restart the api.
 - `pnpm test:ci` - run tests
 - `pnpm test` - run tests in watch mode, changing any files will auto rerun the tests.
