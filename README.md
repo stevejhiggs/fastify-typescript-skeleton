@@ -31,14 +31,14 @@ The api you can get working just by running `bun i` to install the package and t
 ### Other commands
 
 - `bun start` - start the api running locally.
-- `pnpm watch` - start the api in watch mode, changing any files will auto restart the api.
-- `pnpm test:ci` - run tests
-- `pnpm test` - run tests in watch mode, changing any files will auto rerun the tests.
-- `pnpm lint` - run prettier and eslint and auto-fix any issues
-- `pnpm lint:ci` - run prettier and eslint and report issues
-- `pnpm build` - fully build the api as js and output it to the lib directory
-- `pnpm start:production` - run the built app in the lib directory
-- `pnpm setup-commit-hooks` - enables precommit hooks to lint and typecheck
+- `bun watch` - start the api in watch mode, changing any files will auto restart the api.
+- `bun test:ci` - run tests
+- `bun test` - run tests in watch mode, changing any files will auto rerun the tests.
+- `bun lint` - run prettier and eslint and auto-fix any issues
+- `bun lint:ci` - run prettier and eslint and report issues
+- `bun build` - fully build the api as js and output it to the lib directory
+- `bun start:production` - run the built app in the lib directory
+- `bun setup-commit-hooks` - enables precommit hooks to lint and typecheck
 
 ### Environment variables
 
@@ -47,7 +47,7 @@ The api you can get working just by running `bun i` to install the package and t
 
 ### Running tests
 
-All the tests are co-located with the source files and can be ran by running `pnpm test`
+All the tests are co-located with the source files and can be ran by running `bun test`
 
 ## Available routes
 
