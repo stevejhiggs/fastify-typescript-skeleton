@@ -59,6 +59,7 @@ profile*
 *clinic*
 *flamegraph*
 
-dist
+.dist
 
 coverage-*.json
+*.bun-build

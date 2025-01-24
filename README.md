@@ -30,15 +30,14 @@ The api you can get working just by running `bun i` to install the package and t
 
 ### Other commands
 
-- `bun start` - start the api running locally.
-- `bun watch` - start the api in watch mode, changing any files will auto restart the api.
-- `bun test:ci` - run tests
-- `bun test` - run tests in watch mode, changing any files will auto rerun the tests.
-- `bun lint` - run prettier and eslint and auto-fix any issues
-- `bun lint:ci` - run prettier and eslint and report issues
-- `bun build` - fully build the api as js and output it to the lib directory
-- `bun start:production` - run the built app in the lib directory
-- `bun setup-commit-hooks` - enables precommit hooks to lint and typecheck
+- `bun run start` - start the api running locally.
+- `bun run watch` - start the api in watch mode, changing any files will auto restart the api.
+- `bun run test:ci` - run tests
+- `bun run test` - run tests in watch mode, changing any files will auto rerun the tests.
+- `bun run lint` - run prettier and eslint and auto-fix any issues
+- `bun run lint:ci` - run prettier and eslint and report issues
+- `bun run start:production` - run the built app in the lib directory
+- `bun run setup-commit-hooks` - enables precommit hooks to lint and typecheck
 
 ### Environment variables
 
@@ -55,4 +54,4 @@ To see all the available routes load `http://localhost:3000/documentation`. This
 
 ## Performance
 
-On my 2018 macbook pro a single instance can serve the endpoints at roughly 24k rps.
+On my mac a single instance can serve the endpoints at roughly 40k rps.
