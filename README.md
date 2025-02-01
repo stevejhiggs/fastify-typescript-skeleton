@@ -9,9 +9,9 @@ This is an example of what I would consider to be a production ready node api. T
 - Typescript is removed from production builds
 - json schemas used for automatic api request validity checking
 - helmet security headers
-- native node test based tests that support both unit and in-memory integration tests. Tests are also written in typescript
+- both unit and in-memory integration tests.
 - automatic test coverage collection
-- pre-configured linting with eslint + prettier
+- pre-configured linting with biome + prettier
 - logging all set up
 - automatic openapi docs
 - docker support baked in
@@ -46,7 +46,7 @@ The api you can get working just by running `bun i` to install the package and t
 
 ### Running tests
 
-All the tests are co-located with the source files and can be ran by running `bun test`
+All the tests are co-located with the source files and can be ran by running `bun run test`
 
 ## Available routes
 

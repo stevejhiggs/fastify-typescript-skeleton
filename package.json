@@ -8,7 +8,7 @@
     "start": "bun ./index.ts | pino-pretty",
     "start:production": "bun ./index.ts",
     "test": "LOG_LEVEL=warn bun test",
-    "test:ci": "bun run test -- --coverage",
+    "test:ci": "bun run test --coverage",
     "typecheck": "bun -b tsc --noEmit",
     "lint:ci": "bun -b biome check ./src",
     "lint": "bun -b run lint:ci --write",
