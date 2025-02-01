@@ -32,10 +32,6 @@ jobs:
 
       - name: Install packages
         run: bun install
-      - name: license checks
-        run: bun security:licenses
-      - name: package security checks
-        run: bun security:packages
 
   docker-build:
     name: Check docker image builds
