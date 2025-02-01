@@ -20,24 +20,24 @@ This is an example of what I would consider to be a production ready node api. T
 
 ### Requirements
 
-- Node.js 18.x (https://nodejs.org/en/)
-- pnpm (https://pnpm.io/)
+- bun (https://bun.sh/)
+
+(There is a pnpm version of this repo on the "pnpm" branch)
 
 ### Running locally
 
-The api you can get working just by running `pnpm i` to install the package and then `pnpm start` to start the api. You can then access the api on http://localhost:3000. E.g make a GET to http://localhost:3000/health
+The api you can get working just by running `bun i` to install the package and then `bun start` to start the api. You can then access the api on http://localhost:3000. E.g make a GET to http://localhost:3000/health
 
 ### Other commands
 
-- `pnpm start` - start the api running locally.
-- `pnpm watch` - start the api in watch mode, changing any files will auto restart the api.
-- `pnpm test:ci` - run tests
-- `pnpm test` - run tests in watch mode, changing any files will auto rerun the tests.
-- `pnpm lint` - run prettier and eslint and auto-fix any issues
-- `pnpm lint:ci` - run prettier and eslint and report issues
-- `pnpm build` - fully build the api as js and output it to the lib directory
-- `pnpm start:production` - run the built app in the lib directory
-- `pnpm setup-commit-hooks` - enables precommit hooks to lint and typecheck
+- `bun run start` - start the api running locally.
+- `bun run watch` - start the api in watch mode, changing any files will auto restart the api.
+- `bun run test:ci` - run tests
+- `bun run test` - run tests in watch mode, changing any files will auto rerun the tests.
+- `bun run lint` - run prettier and eslint and auto-fix any issues
+- `bun run lint:ci` - run prettier and eslint and report issues
+- `bun run start:production` - run the built app in the lib directory
+- `bun run setup-commit-hooks` - enables precommit hooks to lint and typecheck
 
 ### Environment variables
 
@@ -46,7 +46,7 @@ The api you can get working just by running `pnpm i` to install the package and 
 
 ### Running tests
 
-All the tests are co-located with the source files and can be ran by running `pnpm test`
+All the tests are co-located with the source files and can be ran by running `bun test`
 
 ## Available routes
 
@@ -54,4 +54,4 @@ To see all the available routes load `http://localhost:3000/documentation`. This
 
 ## Performance
 
-On my 2018 macbook pro a single instance can serve the endpoints at roughly 24k rps.
+On my mac a single instance can serve the endpoints at roughly 40k rps.

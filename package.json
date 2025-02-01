@@ -5,17 +5,15 @@
   "main": "dist/listener.js",
   "type": "module",
   "scripts": {
-    "watch": "node --import tsx --watch-path=./src ./index.ts | pino-pretty ",
-    "start": "node --import tsx ./index.ts | pino-pretty",
-    "start:production": "node dist/listener.js",
-    "build": "tsc -p tsconfig.build.json",
-    "test": "LOG_LEVEL=warn node --test --import tsx ./src/**/*.test.ts",
-    "test:ci": "LOG_LEVEL=warn NODE_V8_COVERAGE=src node --test --experimental-test-coverage --import tsx ./src/**/*.test.ts",
-    "typecheck": "tsc --noEmit",
-    "lint:ci": "biome check ./src",
-    "lint": "pnpm run lint:ci --write",
-    "setup-commit-hooks": "husky",
-    "pre-commit": "pnpm lint-staged"
+    "start": "bun ./index.ts | pino-pretty",
+    "start:production": "bun ./index.ts",
+    "test": "LOG_LEVEL=warn bun test",
+    "test:ci": "bun run test -- --coverage",
+    "typecheck": "bun -b tsc --noEmit",
+    "lint:ci": "bun -b biome check ./src",
+    "lint": "bun -b run lint:ci --write",
+    "setup-commit-hooks": "bun -b husky",
+    "pre-commit": "bun -b lint-staged"
   },
   "repository": {
     "type": "git",
@@ -29,28 +27,28 @@
   },
   "homepage": "https://github.com/stevejhiggs/fastify-example#readme",
   "dependencies": {
-    "@fastify/helmet": "^12.0.1",
-    "@fastify/swagger": "^9.4.0",
-    "@fastify/swagger-ui": "^5.1.0",
-    "@fastify/type-provider-typebox": "^5.0.1",
-    "@sinclair/typebox": "0.34.8",
-    "fastify": "^5.1.0",
-    "pino": "^9.5.0"
+    "@fastify/helmet": "^13.0.1",
+    "@fastify/swagger": "^9.4.2",
+    "@fastify/swagger-ui": "^5.2.1",
+    "@fastify/type-provider-typebox": "^5.1.0",
+    "@sinclair/typebox": "0.34.15",
+    "fastify": "^5.2.1",
+    "pino": "^9.6.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node": "^22.9.3",
-    "globals": "^15.12.0",
+    "@types/bun": "^1.2.2",
+    "@types/node": "^22.13.0",
+    "globals": "^15.14.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.2.10",
+    "lint-staged": "^15.4.3",
     "pino-pretty": "^13.0.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "biome check --write --no-errors-on-unmatched"
+      "bun -b biome check --write --no-errors-on-unmatched"
     ]
   },
-  "packageManager": "pnpm@9.14.2"
+  "packageManager": "bun@1.2.2"
 }

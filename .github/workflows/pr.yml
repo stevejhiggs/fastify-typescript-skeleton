@@ -10,46 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: '16'
-          cache: 'yarn'
+          bun-version-file: "package.json"
 
       - name: Install packages
-        run: yarn
+        run: bun install
       - name: Run tests
-        run: yarn test:ci
+        run: bun test:ci
 
-  security:
-    name: Security checks
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          cache: 'yarn'
-
-      - name: Install packages
-        run: yarn
-      - name: license checks
-        run: yarn security:licenses
-      - name: package security checks
-        run: yarn security:packages
 
   docker-build:
     name: Check docker image builds
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # Build the Docker image but dont deploy it
       - name: Build docker image
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           context: ./
           file: ./Dockerfile
