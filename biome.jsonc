@@ -1,4 +1,8 @@
 {
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "useIgnoreFile": true
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
@@ -6,88 +10,23 @@
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 250,
-    "attributePosition": "auto",
-    "ignore": ["**/coverage", "**/lib", "**/node_modules"],
+    "attributePosition": "auto"
   },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
       "complexity": {
-        "noExtraBooleanCast": "error",
-        "noForEach": "error",
-        "noMultipleSpacesInRegularExpressionLiterals": "error",
-        "noStaticOnlyClass": "error",
-        "noUselessCatch": "error",
-        "noUselessSwitchCase": "error",
-        "noWith": "error",
-        "useArrowFunction": "off",
-        "useFlatMap": "error",
-      },
-      "correctness": {
-        "noConstAssign": "error",
-        "noConstantCondition": "error",
-        "noEmptyCharacterClassInRegex": "error",
-        "noEmptyPattern": "error",
-        "noGlobalObjectCalls": "error",
-        "noInvalidConstructorSuper": "error",
-        "noInvalidNewBuiltin": "error",
-        "noNonoctalDecimalEscape": "error",
-        "noPrecisionLoss": "error",
-        "noSelfAssign": "error",
-        "noSetterReturn": "error",
-        "noSwitchDeclarations": "error",
-        "noUndeclaredVariables": "error",
-        "noUnreachable": "error",
-        "noUnreachableSuper": "error",
-        "noUnsafeFinally": "error",
-        "noUnsafeOptionalChaining": "error",
-        "noUnusedLabels": "error",
-        "noUnusedPrivateClassMembers": "error",
-        "noUnusedVariables": "error",
-        "useIsNan": "error",
-        "useValidForDirection": "error",
-        "useYield": "error",
+        "useArrowFunction": "off"
       },
       "style": {
-        "noNegationElse": "off",
-        "useBlockStatements": "off",
         "useFilenamingConvention": {
           "level": "error",
-          "options": { "requireAscii": true, "filenameCases": ["kebab-case"] },
+          "options": { "requireAscii": true, "filenameCases": ["kebab-case"] }
         },
-        "useForOf": "error",
-        "useNodejsImportProtocol": "error",
-        "useNumberNamespace": "error",
-      },
-      "suspicious": {
-        "noAssignInExpressions": "error",
-        "noAsyncPromiseExecutor": "error",
-        "noCatchAssign": "error",
-        "noClassAssign": "error",
-        "noCompareNegZero": "error",
-        "noControlCharactersInRegex": "error",
-        "noDebugger": "error",
-        "noDuplicateCase": "error",
-        "noDuplicateClassMembers": "error",
-        "noDuplicateObjectKeys": "error",
-        "noDuplicateParameters": "error",
-        "noEmptyBlockStatements": "error",
-        "noFallthroughSwitchClause": "error",
-        "noFunctionAssign": "error",
-        "noGlobalAssign": "error",
-        "noImportAssign": "error",
-        "noMisleadingCharacterClass": "error",
-        "noPrototypeBuiltins": "error",
-        "noRedeclare": "error",
-        "noShadowRestrictedNames": "error",
-        "noThenProperty": "error",
-        "noUnsafeNegation": "error",
-        "useGetterReturn": "error",
-        "useIsArray": "error",
-        "useValidTypeof": "error",
-      },
-    },
+        "useForOf": "error"
+      }
+    }
   },
   "javascript": {
     "formatter": {
@@ -99,25 +38,8 @@
       "bracketSpacing": true,
       "bracketSameLine": false,
       "quoteStyle": "single",
-      "attributePosition": "auto",
+      "attributePosition": "auto"
     },
-    "globals": [],
-  },
-  "overrides": [
-    {
-      "ignore": ["node_modules", "lib/**/*", "coverage/**/*"],
-      "javascript": { "globals": ["exports"] },
-      "linter": {
-        "rules": {
-          "correctness": { "useExhaustiveDependencies": "off" },
-          "style": { "useNodejsImportProtocol": "off" },
-          "suspicious": {
-            "noConsoleLog": "error",
-            "noDebugger": "error",
-            "noExplicitAny": "off",
-          },
-        },
-      },
-    },
-  ],
+    "globals": []
+  }
 }
