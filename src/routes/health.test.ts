@@ -12,7 +12,6 @@ describe('endpoints -> health', () => {
   });
 
   afterEach(() => {
-    // biome-ignore lint/suspicious/noEmptyBlockStatements: close requires a callback
     app.close(() => {});
   });
 
