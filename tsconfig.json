@@ -1,18 +1,28 @@
 {
   "compilerOptions": {
-    "types": ["@types/bun"],
+    // output settings
+    "outDir": "dist",
     "sourceMap": true,
+    "noEmit": true,
+
+    // environment settings
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "noEmit": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "strict": true,
     "esModuleInterop": true,
-    "target": "ES2022",
-    "lib": ["ES2022"],
-    "outDir": "dist",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "lib": ["ES2023"],
+    "target": "ES2023",
+    "types": ["@types/bun"],
+
+    // strictness options
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "verbatimModuleSyntax": true,
+
+    // recommended options
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
   "include": ["./src/**/*.ts", "./tests/**/*.ts"]
 }
