@@ -38,7 +38,7 @@ const postSchema = {
 
 const getSchema = {
   querystring: z.object({
-    date: z.string().date(),
+    date: z.iso.date(),
     excitement: z.coerce.number().int().optional()
   }),
   params: z.object({
@@ -49,7 +49,7 @@ const getSchema = {
     200: z.object({
       par1: z.string(),
       par2: z.number(),
-      queryDate: z.string().date(),
+      queryDate: z.iso.date(),
       someOtherKey: z.number()
     })
   }
