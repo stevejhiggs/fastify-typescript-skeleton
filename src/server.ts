@@ -1,8 +1,9 @@
 import helmet from '@fastify/helmet';
 import fastifySwagger, { type SwaggerOptions } from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
-import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 import { fastify } from 'fastify';
+import type { ZodTypeProvider } from 'fastify-type-provider-zod';
+import { jsonSchemaTransform, serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 
 import registerRoutes from './routes/index.js';
 import type { EnhancedFastifyInstance } from './types.js';
@@ -15,7 +16,11 @@ export default async function getServer(port = 3000) {
     logger: {
       level: process.env.LOG_LEVEL || 'info'
     }
-  }).withTypeProvider<TypeBoxTypeProvider>();
+  }).withTypeProvider<ZodTypeProvider>();
+
+  // Set up Zod validators and serializers
+  app.setValidatorCompiler(validatorCompiler);
+  app.setSerializerCompiler(serializerCompiler);
 
   // add security headers
   await app.register(helmet);
@@ -23,14 +28,18 @@ export default async function getServer(port = 3000) {
   // adds open api documentations at /documentation
   if (process.env.DISABLE_DOCS !== 'true') {
     await app.register(fastifySwagger, {
-      swagger: {
+      openapi: {
         info: {
           title: 'Fastify skeleton api',
           version: '1.0.0'
         },
-        host: `localhost:${port}`
+        servers: [
+          {
+            url: `http://localhost:${port}`
+          }
+        ]
       },
-      exposeRoute: true
+      transform: jsonSchemaTransform
     } as SwaggerOptions);
     await app.register(fastifySwaggerUi, {
       routePrefix: '/documentation',

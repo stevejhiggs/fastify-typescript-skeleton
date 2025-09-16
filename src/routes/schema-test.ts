@@ -1,60 +1,59 @@
-import { Type } from '@sinclair/typebox';
-import type { FastifySchema } from 'fastify';
+import { z } from 'zod/v4';
 import type { EnhancedFastifyInstance } from '../types.js';
 
-// Typebox can generate both json schema and typescript types
+// Zod can generate both json schema and typescript types
 // the json schemas are checked at runtime, the ts schemas at compile time.
 // You don't have to use all of these on each request.
-// We've enabled the typebox schema provider so we can just pass the typebox schema
+// We've enabled the zod schema provider so we can just pass the zod schema
 // directly in and get runtime + build time checking
 const postSchema = {
-  body: Type.Object({
-    someKey: Type.Optional(Type.String()),
-    someOtherKey: Type.Number({ maximum: 999 }),
-    arrayKey: Type.Array(Type.Number(), { maxItems: 3 }),
-    nullableKey: Type.Union([Type.Number(), Type.Null()]),
-    multipleTypesKey: Type.Union([Type.Number(), Type.Boolean()])
+  body: z.object({
+    someKey: z.string().optional(),
+    someOtherKey: z.number().max(999),
+    arrayKey: z.array(z.number()).max(3),
+    nullableKey: z.number().nullable(),
+    multipleTypesKey: z.union([z.number(), z.boolean()])
   }),
-  querystring: Type.Object({
-    name: Type.String(),
-    excitement: Type.Optional(Type.Integer())
+  querystring: z.object({
+    name: z.string(),
+    excitement: z.coerce.number().int().optional()
   }),
-  params: Type.Object({
-    par1: Type.String(),
-    par2: Type.Number()
+  params: z.object({
+    par1: z.string(),
+    par2: z.coerce.number()
   }),
-  headers: Type.Object({
-    'x-foo': Type.String()
+  headers: z.object({
+    'x-foo': z.string()
   }),
   response: {
-    200: Type.Object({
-      par1: Type.String(),
-      par2: Type.Number(),
-      queryName: Type.String(),
-      foo: Type.String(),
-      someOtherKey: Type.Number()
+    200: z.object({
+      par1: z.string(),
+      par2: z.number(),
+      queryName: z.string(),
+      foo: z.string(),
+      someOtherKey: z.number()
     })
   }
-} satisfies FastifySchema;
+};
 
 const getSchema = {
-  querystring: Type.Object({
-    date: Type.String({ format: 'date' }),
-    excitement: Type.Optional(Type.Integer())
+  querystring: z.object({
+    date: z.string().date(),
+    excitement: z.coerce.number().int().optional()
   }),
-  params: Type.Object({
-    par1: Type.String(),
-    par2: Type.Number()
+  params: z.object({
+    par1: z.string(),
+    par2: z.coerce.number()
   }),
   response: {
-    200: Type.Object({
-      par1: Type.String(),
-      par2: Type.Number(),
-      queryDate: Type.String({ format: 'date' }),
-      someOtherKey: Type.Number()
+    200: z.object({
+      par1: z.string(),
+      par2: z.number(),
+      queryDate: z.string().date(),
+      someOtherKey: z.number()
     })
   }
-} satisfies FastifySchema;
+};
 
 export default function registerRoutes(app: EnhancedFastifyInstance) {
   app.post('/schema-test/post/:par1/:par2', { schema: postSchema }, async (request, reply) => {
