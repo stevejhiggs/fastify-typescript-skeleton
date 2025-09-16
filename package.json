@@ -5,15 +5,17 @@
   "main": "dist/listener.js",
   "type": "module",
   "scripts": {
-    "start": "bun ./index.ts | pino-pretty",
-    "start:production": "bun ./index.ts",
-    "test": "LOG_LEVEL=warn bun test",
-    "test:ci": "bun run test --coverage",
-    "typecheck": "bun -b tsc --noEmit",
-    "lint:ci": "bun -b biome check ./src",
-    "lint": "bun -b run lint:ci --write",
-    "setup-commit-hooks": "bun -b husky",
-    "pre-commit": "bun -b lint-staged"
+    "watch": "node --import tsx --watch-path=./src ./index.ts | pino-pretty ",
+    "start": "node --import tsx ./index.ts | pino-pretty",
+    "start:production": "pnpm ./index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "LOG_LEVEL=warn node --test --import tsx ./src/**/*.test.ts",
+    "test:ci": "LOG_LEVEL=warn node --test --experimental-test-coverage --import tsx ./src/**/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "lint:ci": "biome check ./src",
+    "lint": "pnpm run lint:ci --write",
+    "setup-commit-hooks": "pnpm husky",
+    "pre-commit": "pnpm lint-staged"
   },
   "repository": {
     "type": "git",
@@ -33,11 +35,11 @@
     "fastify": "^5.6.0",
     "fastify-type-provider-zod": "^6.0.0",
     "pino": "^9.9.5",
+    "tsx": "^4.20.5",
     "zod": "^4.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
-    "@types/bun": "^1.2.22",
     "@types/node": "^24.5.0",
     "globals": "^16.4.0",
     "husky": "^9.1.7",
@@ -47,8 +49,8 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "bun -b biome check --write --no-errors-on-unmatched"
+      "biome check --write --no-errors-on-unmatched"
     ]
   },
-  "packageManager": "bun@1.2.22"
+  "packageManager": "pnpm@10.16.1+sha512.0e155aa2629db8672b49e8475da6226aa4bdea85fdcdfdc15350874946d4f3c91faaf64cbdc4a5d1ab8002f473d5c3fcedcd197989cf0390f9badd3c04678706"
 }

@@ -1,4 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
+import assert from 'node:assert';
+import { afterEach, beforeEach, describe, it } from 'node:test';
 
 import getServer from '../server.js';
 import type { EnhancedFastifyInstance } from '../types.js';
@@ -22,7 +23,7 @@ describe('endpoints -> health', () => {
         url: '/health'
       });
 
-      expect(result.statusCode).toBe(200);
+      assert.equal(result.statusCode, 200);
     });
 
     it('should return a 404 with a POST request', async () => {
@@ -31,7 +32,7 @@ describe('endpoints -> health', () => {
         url: '/health'
       });
 
-      expect(result.statusCode).toBe(404);
+      assert.equal(result.statusCode, 404);
     });
   });
 });
