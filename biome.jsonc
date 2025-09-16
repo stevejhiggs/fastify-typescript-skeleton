@@ -25,6 +25,9 @@
           "options": { "requireAscii": true, "filenameCases": ["kebab-case"] }
         },
         "useForOf": "error"
+      },
+      "correctness": {
+        "useParseIntRadix": "off"
       }
     }
   },

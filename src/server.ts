@@ -9,7 +9,9 @@ import type { EnhancedFastifyInstance } from './types.js';
 
 export default async function getServer(port = 3000) {
   const app = fastify({
-    ignoreTrailingSlash: true,
+    routerOptions: {
+      ignoreTrailingSlash: true
+    },
     logger: {
       level: process.env.LOG_LEVEL || 'info'
     }
