@@ -7,7 +7,7 @@
   "scripts": {
     "watch": "node --import tsx --watch-path=./src ./index.ts | pino-pretty ",
     "start": "node --import tsx ./index.ts | pino-pretty",
-    "start:production": "pnpm ./index.ts",
+    "start:production": "node ./.dist/listener.js",
     "build": "tsc -p tsconfig.build.json",
     "test": "LOG_LEVEL=warn node --test --import tsx ./src/**/*.test.ts",
     "test:ci": "LOG_LEVEL=warn node --test --experimental-test-coverage --import tsx ./src/**/*.test.ts",
