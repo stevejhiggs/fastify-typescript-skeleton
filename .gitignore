@@ -52,6 +52,7 @@ profile-*
 .vscode/*
 # allow launch.json
 !.vscode/launch.json 
+!.vscode/settings.json 
 *code-workspace
 
 # clinic

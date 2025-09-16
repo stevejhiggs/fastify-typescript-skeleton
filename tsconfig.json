@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     // output settings
-    "outDir": "dist",
+    "outDir": ".dist",
     "sourceMap": true,
-    "noEmit": true,
 
     // environment settings
     "module": "NodeNext",
@@ -12,7 +11,7 @@
     "resolveJsonModule": true,
     "lib": ["ES2023"],
     "target": "ES2023",
-    "types": ["@types/bun"],
+    "types": ["@types/node"],
 
     // strictness options
     "strict": true,
