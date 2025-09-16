@@ -5,7 +5,7 @@ import { fastify } from 'fastify';
 import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 import { jsonSchemaTransform, serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 
-import registerRoutes from './routes/index.js';
+import registerRoutes from './routes.js';
 import type { EnhancedFastifyInstance } from './types.js';
 
 export default async function getServer(port = 3000) {
