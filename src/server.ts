@@ -29,6 +29,7 @@ export default async function getServer(port = 3000) {
   if (process.env.DISABLE_DOCS !== 'true') {
     await app.register(fastifySwagger, {
       openapi: {
+        openapi: '3.1.0',
         info: {
           title: 'Fastify skeleton api',
           version: '1.0.0'
