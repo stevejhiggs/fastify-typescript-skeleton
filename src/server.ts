@@ -6,7 +6,6 @@ import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 import { jsonSchemaTransform, serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 
 import registerRoutes from './routes.js';
-import type { EnhancedFastifyInstance } from './types.js';
 
 export default async function getServer(port = 3000) {
   const app = fastify({
@@ -41,7 +40,7 @@ export default async function getServer(port = 3000) {
         ]
       },
       transform: jsonSchemaTransform
-    } as SwaggerOptions);
+    });
     await app.register(fastifySwaggerUi, {
       routePrefix: '/documentation',
       uiConfig: {
@@ -52,7 +51,7 @@ export default async function getServer(port = 3000) {
     });
   }
 
-  registerRoutes(app as EnhancedFastifyInstance);
+  registerRoutes(app);
 
   return app;
 }
