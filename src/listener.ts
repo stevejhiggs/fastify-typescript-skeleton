@@ -1,8 +1,7 @@
-import type { AddressInfo } from 'node:net';
 import { logger } from './logger.js';
 import getServer from './server.js';
 
-const port: number = Number.parseInt(process.env.PORT || '3000');
+const port: number = Number.parseInt(process.env['PORT'] || '3000');
 
 // The listener attaches the server to a network port
 // this is done seperately to the server to allow the server
@@ -10,12 +9,16 @@ const port: number = Number.parseInt(process.env.PORT || '3000');
 const start = async () => {
   try {
     const app = await getServer(port);
-    await app.listen({ port, host: '::' });
-    const currentAddress = app.server.address() as AddressInfo;
-    app.log.info(`server listening on http://${currentAddress.address}:${currentAddress.port}`);
+    await app.listen({
+      port,
+      host: '::',
+      listenTextResolver: (address) => {
+        return `Server listening on ${address.replace('[::]', 'localhost')}`;
+      }
+    });
   } catch (error) {
     logger.error(error);
   }
 };
 
-start();
+await start();
