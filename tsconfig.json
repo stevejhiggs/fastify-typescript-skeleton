@@ -10,8 +10,10 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "lib": ["ES2023"],
-    "target": "ES2023",
+    "target": "esnext",
     "types": ["@types/node"],
+    "rewriteRelativeImportExtensions": true,
+    "erasableSyntaxOnly": true,
 
     // strictness options
     "strict": true,

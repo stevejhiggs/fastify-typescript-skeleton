@@ -2,32 +2,31 @@
   "name": "fastify-example",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/listener.js",
-  "type": "module",
-  "scripts": {
-    "watch": "node --import tsx --watch-path=./src ./index.ts | pino-pretty ",
-    "start": "node --import tsx ./index.ts | pino-pretty",
-    "start:production": "node ./.dist/listener.js",
-    "build": "tsc -p tsconfig.build.json",
-    "test": "LOG_LEVEL=warn node --test --import tsx ./src/**/*.test.ts",
-    "test:ci": "LOG_LEVEL=warn node --test --experimental-test-coverage --import tsx ./src/**/*.test.ts",
-    "typecheck": "tsc --noEmit",
-    "lint:ci": "biome check ./src",
-    "lint": "pnpm run lint:ci --write",
-    "setup-commit-hooks": "pnpm husky",
-    "pre-commit": "pnpm lint-staged"
+  "keywords": [],
+  "homepage": "https://github.com/stevejhiggs/fastify-typescript-skeleton#readme",
+  "bugs": {
+    "url": "https://github.com/stevejhiggs/fastify-typescript-skeleton/issues"
   },
+  "license": "ISC",
+  "author": "",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stevejhiggs/fastify-typescript-skeleton.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/stevejhiggs/fastify-typescript-skeleton/issues"
+  "type": "module",
+  "main": "dist/listener.js",
+  "scripts": {
+    "watch": "node --import tsx --watch-path=./src ./index.ts | pino-pretty ",
+    "start": "node --import tsx ./index.ts | pino-pretty",
+    "start:production": "node --enable-source-maps ./.dist/listener.js",
+    "build": "tsgo -p tsconfig.build.json",
+    "test": "LOG_LEVEL=warn node --test --import tsx ./src/**/*.test.ts",
+    "test:ci": "LOG_LEVEL=warn node --test --experimental-test-coverage --import tsx ./src/**/*.test.ts",
+    "lint:ci": "oxlint --type-aware --type-check ./src && oxfmt --check ./src",
+    "lint": "oxlint --type-aware --type-check --fix ./src && oxfmt ./src",
+    "setup-commit-hooks": "pnpm husky",
+    "pre-commit": "pnpm lint-staged"
   },
-  "homepage": "https://github.com/stevejhiggs/fastify-typescript-skeleton#readme",
   "dependencies": {
     "@fastify/helmet": "^13.0.2",
     "@fastify/swagger": "^9.6.1",
@@ -38,18 +37,21 @@
     "zod": "^4.3.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.11",
     "@types/node": "^25.0.8",
+    "@typescript/native-preview": "7.0.0-dev.20260115.1",
     "globals": "^17.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "oxfmt": "latest",
+    "oxlint": "latest",
+    "oxlint-tsgolint": "^0.11.0",
     "pino-pretty": "^13.1.3",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "tsx": "^4.21.0"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "biome check --write --no-errors-on-unmatched"
+      "oxlint",
+      "oxfmt"
     ]
   },
   "packageManager": "pnpm@10.28.0"

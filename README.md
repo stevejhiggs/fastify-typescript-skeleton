@@ -11,7 +11,7 @@ This is an example of what I would consider to be a production ready node api. T
 - helmet security headers
 - both unit and in-memory integration tests.
 - automatic test coverage collection
-- pre-configured linting with biome + prettier
+- pre-configured linting with oxlint
 - logging all set up
 - automatic openapi docs
 - docker support baked in

@@ -1,5 +1,5 @@
 import helmet from '@fastify/helmet';
-import fastifySwagger, { type SwaggerOptions } from '@fastify/swagger';
+import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
 import { fastify } from 'fastify';
 import type { ZodTypeProvider } from 'fastify-type-provider-zod';
